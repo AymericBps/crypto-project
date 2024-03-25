@@ -4,7 +4,7 @@
 
 <?php
 
-$data = json_decode(file_get_contents('php://input'), true);
+$data = json_decode(file_get_contents('php://input'));
 
 $dbhost = "localhost";
 $dbuser = "root";
@@ -19,11 +19,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$nom = "Bitcoin";
-$valeur_eur = $data['bitcoin']['eur'];
-var_dump($valeur_eur);
 
-$sql = "INSERT INTO currencies (name, valueEUR VALUES (?, ?)";
+$nom = $data['bitcoin'];//Le truc de notre js (l'api)
+$valeurEUR = $data['eur'];//Le truc de notre js (l'api)
+
+$sql = "INSERT INTO currencies (name, valueEUR VALUES ($nom)";
 $stmt = $conn->prepare($sql);
 var_dump($sql);
 $stmt->execute();
