@@ -1,12 +1,9 @@
 <?php
-// Include the Currencies class
 require_once './App/Model/currencies.php';
 require_once './js/traitement.php';
 
-// Create an instance of the Currencies class
 $currencies = new Curencies();
 
-// Get all currency data
 $currencyData = $currencies->getAll();
 
 ?>
